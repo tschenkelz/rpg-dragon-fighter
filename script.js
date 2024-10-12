@@ -119,7 +119,7 @@ function initialState() {
   // initialize weapon
   weaponNameText.innerText = weapons[0].name;
   weaponPowerText.innerText = weapons[0].power;
-  xp = 100
+  xp = 0
   health = 100
   gold = 50
   currentWeapon = 0;
