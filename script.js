@@ -119,7 +119,7 @@ function initialState() {
   // initialize weapon
   weaponNameText.innerText = weapons[0].name;
   weaponPowerText.innerText = weapons[0].power;
-  xp = 0
+  xp = 100
   health = 100
   gold = 50
   currentWeapon = 0;
@@ -242,12 +242,15 @@ function goFight() {
 function attack() {
   text.innerText = "The " + monsterName + " attacks!";
   text.innerText += " You attack it with your " + inventory[(inventory.length - 1)] + "."
+
+  // firstly monster attacks
   if (isMonsterHit() || health < 20) {
     health -= getMonsterAttackDmg(monsters[fighting].level);
   } else {
     text.innerText = "The monster missed.";
   }
 
+  // secondly we attack
   monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   update_stats();
   update_monster_stats();
@@ -267,6 +270,10 @@ function getMonsterAttackDmg(level) {
   console.log("level: "+ level);
   console.log("xp: "+ xp);
   let hit = (level * 5) - (Math.floor(Math.random() * xp));
+  // quick-and-dirty fix: if hit calculation above results in negative value, set it 0
+  if (hit < 0) {
+    hit = 0
+  }
   return hit;
 }
 
