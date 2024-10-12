@@ -16,8 +16,6 @@ const goldText = document.querySelector("#goldText");
 const weaponNameText = document.querySelector("#weaponNameText");
 const weaponPowerText = document.querySelector("#weaponPowerText");
 const monsterStats = document.querySelector("#monsterStats");
-const monsterNameText = document.querySelector("#monsterName");
-const monsterHealthText = document.querySelector("#monsterHealth");
 
 const weapons = [
   {
